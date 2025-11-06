@@ -1,7 +1,7 @@
-from player_reader import PlayerReader
-from statistic_service import PlayerStats
 from rich.table import Table
 from rich.console import Console
+from player_reader import PlayerReader
+from statistic_service import PlayerStats
 
 def main():
     season = input("Minkä kauden tilastoja tarkastellaan? (esim. 2024-25) ")
@@ -12,8 +12,11 @@ def main():
     players = stats.top_scorers_by_nationality(nationality)
 
     console = Console()
-    table = Table(title=f"Season {season} players from {nationality}:")
+    table = create_table(players, season, nationality)
+    console.print(table)
 
+def create_table(players, season, nationality):
+    table = Table(title=f"Season {season} players from {nationality}:")
     table.add_column("Released", justify="left", style="cyan")
     table.add_column("Teams", justify="left", style="magenta")
     table.add_column("Goals", justify="right", style="yellow")
@@ -29,7 +32,7 @@ def main():
             str(player.points())
         )
 
-    console.print(table)
+    return table
 
 if __name__ == "__main__":
     main()
