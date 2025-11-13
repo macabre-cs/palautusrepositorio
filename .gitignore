@@ -5,3 +5,4 @@ htmlcov/
 viikko1/varasto
 .coverage
 .coveragerc
+selenium-screenshot*

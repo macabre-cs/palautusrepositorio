@@ -19,7 +19,7 @@ Login With Incorrect Password
 
 Login With Nonexistent Username
     Set Username  lohi
-    Set Password  lohi123
+    Set Password  lohi1234
     Click Button  Login
     Login Should Fail With Message  Invalid username or password
 
