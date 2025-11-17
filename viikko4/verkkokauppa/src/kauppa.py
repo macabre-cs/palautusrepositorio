@@ -6,6 +6,7 @@ class Kauppa:
         self._pankki = pankki
         self._viitegeneraattori = viitegeneraattori
         self._kaupan_tili = "33333-44455"
+        self._ostoskori = Ostoskori()
 
 
     def aloita_asiointi(self):
