@@ -17,37 +17,19 @@ class TennisGame:
             self.score2 = self.score2 + 1
 
     def get_score(self):
-        score = ""
-        current_score = 0
-
         if self.score1 == self.score2:
-            if self.score1 == 0:
-                score = "Love-All"
-            elif self.score1 == 1:
-                score = "Fifteen-All"
-            elif self.score1 == 2:
-                score = "Thirty-All"
-            else:
-                score = "Deuce"
-        elif self.score1 >= 4 or self.score2 >= 4:
-            minus_result = self.score1 - self.score2
+            if self.score1 < 3:
+                return f"{self.score_name(self.score1)}-All"
+            return "Deuce"
 
-            if minus_result == 1:
-                score = "Advantage player1"
-            elif minus_result == -1:
-                score = "Advantage player2"
-            elif minus_result >= 2:
-                score = "Win for player1"
-            else:
-                score = "Win for player2"
-        else:
-            for i in range(1, 3):
-                if i == 1:
-                    current_score = self.score1
-                else:
-                    score = score + "-"
-                    current_score = self.score2
+        if self.score1 >= 4 or self.score2 >= 4:
+            diff = self.score1 - self.score2
+            if diff == 1:
+                return "Advantage player1"
+            if diff == -1:
+                return "Advantage player2"
+            if diff >= 2:
+                return "Win for player1"
+            return "Win for player2"
 
-                score = score + self.score_name(current_score)
-
-        return score
+        return f"{self.score_name(self.score1)}-{self.score_name(self.score2)}"
