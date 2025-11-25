@@ -1,4 +1,9 @@
 class TennisGame:
+    SCORE_NAMES = {0: "Love", 1: "Fifteen", 2: "Thirty", 3: "Forty"}
+
+    def score_name(self, score):
+        return self.SCORE_NAMES.get(score, "")
+
     def __init__(self, player1_name, player2_name):
         self.player1_name = player1_name
         self.player2_name = player2_name
@@ -43,13 +48,6 @@ class TennisGame:
                     score = score + "-"
                     current_score = self.score2
 
-                if current_score == 0:
-                    score = score + "Love"
-                elif current_score == 1:
-                    score = score + "Fifteen"
-                elif current_score == 2:
-                    score = score + "Thirty"
-                elif current_score == 3:
-                    score = score + "Forty"
+                score = score + self.score_name(current_score)
 
         return score
