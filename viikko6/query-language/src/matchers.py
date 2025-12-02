@@ -51,3 +51,15 @@ class Not:
 
     def test(self, player):
         return not self._matcher.test(player)
+
+
+class Or:
+    def __init__(self, *matchers):
+        self._matchers = matchers
+
+    def test(self, player):
+        for matcher in self._matchers:
+            if matcher.test(player):
+                return True
+
+        return False
