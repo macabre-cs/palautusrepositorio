@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kivi-Paperi-Sakset</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Quicksand', 'Kalam', cursive, sans-serif;
+            background: linear-gradient(135deg, #f5e6d3 0%, #e8d5c4 50%, #dcc9b8 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Decorative flowers */
+        body::before {
+            content: "🌼";
+            position: fixed;
+            top: 10%;
+            left: 5%;
+            font-size: 3em;
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        body::after {
+            content: "🌻";
+            position: fixed;
+            bottom: 15%;
+            right: 8%;
+            font-size: 2.5em;
+            opacity: 0.4;
+            animation: float 7s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .container {
+            background: linear-gradient(135deg, #fff9f5 0%, #ffefd5 100%);
+            border: 3px solid #d4a574;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(139, 90, 43, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            padding: 50px 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+        
+        .decorative-top {
+            font-size: 2em;
+            margin-bottom: 20px;
+            letter-spacing: 10px;
+        }
+        
+        h1 {
+            color: #8b5a2b;
+            margin-bottom: 10px;
+            font-size: 2.8em;
+            font-family: 'Kalam', cursive;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .emoji {
+            font-size: 3.5em;
+            margin: 15px 0 20px 0;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        h2 {
+            color: #a0826d;
+            margin-bottom: 35px;
+            font-weight: 600;
+            font-size: 1.3em;
+            letter-spacing: 1px;
+        }
+        
+        .game-options {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        
+        .game-button {
+            background: linear-gradient(135deg, #d4a574 0%, #c19a6b 100%);
+            color: #fff9f5;
+            border: 2px solid #8b5a2b;
+            padding: 16px 25px;
+            font-size: 1.05em;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-family: 'Quicksand', sans-serif;
+            box-shadow: 0 4px 15px rgba(139, 90, 43, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .game-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .game-button:hover::before {
+            left: 100%;
+        }
+        
+        .game-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(139, 90, 43, 0.3);
+            background: linear-gradient(135deg, #e0b896 0%, #cda65f 100%);
+        }
+        
+        .game-button:active {
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="decorative-top">🏡 🌿 🏡</div>
+        <h1>Kivi-Paperi-Sakset</h1>
+        <div class="emoji">✊✋✌️</div>
+        <h2>Valitse pelitila</h2>
+        
+        <form action="/start" method="POST" class="game-options">
+            <button type="submit" name="game_mode" value="a" class="game-button">
+                👥 Pelaaja vs Pelaaja
+            </button>
+            <button type="submit" name="game_mode" value="b" class="game-button">
+                🤖 Pelaaja vs Tekoäly
+            </button>
+            <button type="submit" name="game_mode" value="c" class="game-button">
+                🧠 Pelaaja vs Parannettu Tekoäly
+            </button>
+        </form>
+    </div>
+</body>
+</html>
